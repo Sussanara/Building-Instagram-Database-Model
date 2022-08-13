@@ -8,6 +8,14 @@ from eralchemy import render_er
 
 Base = declarative_base()
 
+class Favorites(Base):
+    __tablename__= 'favorites'
+    id = Column(Integer,primary_key=True)
+    planet_id = Column(Integer,ForeignKey('planets.id'))
+    character_id = Column(Integer,ForeignKey('characters.id'))
+    vehicle_id = Column(Integer,ForeignKey('vehicles.id'))
+    user_id = Column(Integer,ForeignKey('user.id'))
+
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
@@ -20,19 +28,17 @@ class Characters(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     height = Column(String(250))
-    hair_color = Column(String(100))
     mass = Column(String(250))
     gender = Column(String(250))
     vehicle_id = Column(Integer,ForeignKey('vehicles.id'))
 
 class Planets(Base):
-    __tablename__ = 'characters'
+    __tablename__ = 'planets'
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
     gravity = Column(Integer)
     terrain = Column(String(250))
     population = Column(Integer)
-    climate = Column(String(100))
 
 class Vehicles(Base):
     __tablename__= 'vehicles'
