@@ -27,7 +27,21 @@ class Characters(Base):
 
 class Planets(Base):
     __tablename__ = 'characters'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250))
+    gravity = Column(Integer)
+    terrain = Column(String(250))
+    population = Column(Integer)
+    climate = Column(String(100))
 
+class Vehicles(Base):
+    __tablename__= 'vehicles'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250))
+    cost = Column(Integer)
+    model = Column(String(250))
+    pilots = Column(Integer)
+    max_speed = Column(Integer)
 
     def to_dict(self):
         return {}
